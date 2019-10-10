@@ -4,7 +4,7 @@ body {
     background: blue;
 }
 
-​.player {
+.player {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -14,13 +14,13 @@ body {
     background: black;
 }
 
-​.buttons {
+.buttons {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-​.text {
+.text {
     width: 100%;
     height: 40px;
     background: green;
