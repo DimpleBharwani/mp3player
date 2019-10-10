@@ -88,12 +88,12 @@ function fnVolume() {
 
     // Way 3 (Refactor)
     // En nuestro caso, se puede eliminar el último if
-    // if (audio.volume == 0.5)
-    //     changeVolume(1, 'up');
-    // else if (audio.volume == 1)
-    //     changeVolume(0, 'mute');
-    // else if (audio.volume == 0)
-    //     changeVolume(0.5, 'down');
+    if (audio.volume == 0.5)
+        changeVolume(1, 'up');
+    else if (audio.volume == 1)
+        changeVolume(0, 'mute');
+    else if (audio.volume == 0)
+        changeVolume(0.5, 'down');
 
     // Way 4 (Switch)
     // switch (audio.volume) {
@@ -112,11 +112,11 @@ function fnVolume() {
     // }
 
     // Way 5 (CRAZY JAVASCRIPT ULTIMATE REFACTOR)
-    const cases = {
-        0.5: changeVolume.bind(null, 1, 'up'),
-        1: changeVolume.bind(null, 0, 'mute'),
-        0: changeVolume.bind(null, 0.5, 'down')
-    }
+    // const cases = {
+    //     0.5: changeVolume.bind(null, 1, 'up'),
+    //     1: changeVolume.bind(null, 0, 'mute'),
+    //     0: changeVolume.bind(null, 0.5, 'down')
+    // }
     cases[audio.volume]();
 }
 
@@ -134,23 +134,3 @@ buttons.prev.addEventListener('click', fnPrev);
 buttons.next.addEventListener('click', fnNext);
 buttons.stop.addEventListener('click', fnStop);
 buttons.volume.addEventListener('click', fnVolume);
-
-
-function fnPlay() {
-    // let audio = new Audio(songs[currentSong]);
-    audio.play();
-}
-
-
-function fnPause() {
-    audio.pause();
-}
-
-function putText() {
-    const nameSong = songs[currentSong]
-    const cleanName = unescape(nameSong)
-    const pos = cleanName.lastIndexOf("/") + 1 //pos 31
-    const shortName = cleanName.substring(pos);
-    const miniName = shortName.replace('mp3', '')
-    divText.innerHTML = miniName
-}
