@@ -53,36 +53,36 @@ function fnPrev() {
 
 function fnNext() {
     currentSong++;
- 
+
     if (currentSong >= songs.length) {
         currentSong = 0;
     }
- 
+
     fnPlay();
 }
- 
+
 function fnStop() {
     audio.currentTime = 0;
     fnPause();
 }
 
 
- 
+
 function changeVolume(vol, name) {
     audio.volume = vol;
     buttons.volume.innerHTML = `<i class="fas fa-volume-${name}"></i>`;
 }
- 
+
 function fnVolume() {
- 
+
     if (audio.volume == 0.5)
         changeVolume(1, 'up');
     else if (audio.volume == 1)
         changeVolume(0, 'mute');
-    else 
+    else
         changeVolume(0.5, 'down');
 }
- 
+
 function putText() {
     const nameSong = songs[currentSong];
     const cleanName = unescape(nameSong);
@@ -106,11 +106,11 @@ function putText() {
 
 function progressBar() {
     // barfill.style.width = ((audio.currentTime/audio.duration) * 100) + "%";
-    let porcentaje = (audio.currentTime/audio.duration) * 100
+    let porcentaje = (audio.currentTime / audio.duration) * 100
     barfill.style.width = porcentaje + '%';
 }
 
-audio.addEventListener("timeupdate", progressBar());
+audio.addEventListener("timeupdate", progressBar);
 // audio.ontimeupdate = progressBar();
 
 buttons.play.addEventListener('click', fnPlay);
@@ -119,3 +119,5 @@ buttons.prev.addEventListener('click', fnPrev);
 buttons.next.addEventListener('click', fnNext);
 buttons.stop.addEventListener('click', fnStop);
 buttons.volume.addEventListener('click', fnVolume);
+
+console.log(audio.duration);
